@@ -27,7 +27,7 @@ data["Total_Sales"] = (np.array(data["Units_Sold"]) * price_per_unit).round(2)
 df = pd.DataFrame(data)
 
 # Save to CSV (optional)
-df.to_csv("C://Users//ahuja//OneDrive//Desktop//Data mining mod 4//Nike_Product_Performance_Dataset.csv", index=False)
+df.to_csv("Nike_Product_Performance_Dataset.csv", index=False)
 
 # Display first few rows
 print(df.head())
