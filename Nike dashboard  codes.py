@@ -1,5 +1,8 @@
 import pandas as pd
 import numpy as np
+import streamlit as st
+st.set_page_config(page_title="Nike Dashboard", layout="wide")
+st.title("Nike Product Performance Dashboard")
 
 # Set random seed for reproducibility
 np.random.seed(42)
