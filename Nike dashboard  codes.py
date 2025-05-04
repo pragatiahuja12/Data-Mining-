@@ -1,16 +1,16 @@
+import streamlit as st
 import pandas as pd
 import numpy as np
-import streamlit as st
-st.set_page_config(page_title="Nike Dashboard", layout="wide")
+
+# Streamlit app setup
+st.set_page_config(page_title="Nike Product Performance Dashboard", layout="wide")
 st.title("Nike Product Performance Dashboard")
 
-# Set random seed for reproducibility
+# Generate dataset
 np.random.seed(42)
-
-# Number of product records
 num_records = 300
 
-# Generate fields for the dataset
+# Simulate Nike product performance data
 data = {
     "Product_ID": [f"NKE{1000+i}" for i in range(num_records)],
     "Product_Name": [f"Product_{i}" for i in range(num_records)],
@@ -22,21 +22,23 @@ data = {
     "Date": pd.date_range(start="2023-01-01", periods=num_records, freq="D")
 }
 
-# Generate Total_Sales based on Units_Sold and random price per unit
+# Calculate Total Sales
 price_per_unit = np.random.uniform(50, 200, size=num_records)
 data["Total_Sales"] = (np.array(data["Units_Sold"]) * price_per_unit).round(2)
 
 # Create DataFrame
 df = pd.DataFrame(data)
 
-# Save to CSV (optional)
-df.to_csv("Nike_Product_Performance_Dataset.csv", index=False)
+# Show a preview
+st.subheader("Sample Data")
+st.dataframe(df.head())
 
-# Display first few rows
-print(df.head())
+# Download button
+csv = df.to_csv(index=False).encode('utf-8')
+st.download_button(
+    label="📥 Download Full Dataset as CSV",
+    data=csv,
+    file_name="Nike_Product_Performance_Dataset.csv",
+    mime="text/csv"
+)
 
-
-import pandas as pd
-import numpy as np
-
-# Set random seed for reproducibili
