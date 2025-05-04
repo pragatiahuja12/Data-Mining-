@@ -6,7 +6,7 @@ import plotly.express as px
 @st.cache_data
 def load_data():
     df = pd.read_csv("Nike_Product_Performance_Dataset.csv")
-    df["Date"] = pd.to_datetime(df["Date"])
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df
 
 df = load_data()
